@@ -12,17 +12,23 @@ class Scene1 extends Phaser.Scene {
     this.load.image('zomb', 'assets/zomb.png');
 
     this.load.audio('bread', [
-      'assets/bread.mp3'
-  ]);
+      'assets/sound/bread.mp3'
+    ]);
   }
 
   create() {
     scene = this;
     dude = this.add.existing(new Dude(this, 400, 400));
     for (let i = 0; i < 20; i++) {
-      var posx = Phaser.Math.Between(0, 800);
-      var posy = Phaser.Math.Between(0, 800);
-      zombs.push(this.add.existing(new Zomb(this, posx, posy, dude)));
+      this.time.addEvent({
+        delay: 1000,
+        callback: () => {
+          var posx = Phaser.Math.Between(0, 800);
+          var posy = Phaser.Math.Between(0, 800);
+          zombs.push(this.add.existing(new Zomb(this, posx, posy, 5, dude)));
+        },
+      })
+
     }
 
     this.sound.pauseOnBlur = false;
@@ -30,7 +36,7 @@ class Scene1 extends Phaser.Scene {
     var music = this.sound.add('bread');
 
     music.play();
-}
+  }
 
   update() {
 

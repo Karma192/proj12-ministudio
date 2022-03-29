@@ -1,18 +1,19 @@
 class Zomb extends Phaser.GameObjects.Image {
-    constructor(scene, x, y) {
+    constructor(scene, x, y, hp) {
         super(scene, x, y, 'zomb');
 
         this.startX = x;
         this.startY = y;
 
         this.speed = 0.01;
+        this.health = hp;
     }
 
-    preload() {
+    /*preload() {
         this.load.audio('scream', [
             'assets/screamsZ.mp3'
         ]);
-    }
+    }*/
 
     update() {
         this.x += (dude.x - this.x) * this.speed;
@@ -25,7 +26,7 @@ class Zomb extends Phaser.GameObjects.Image {
     }
 
     damaged() {
-        this.x -= (dude.x - this.x) * (this.speed * 2);
-        this.y -= (dude.y - this.y) * (this.speed * 2);
+        this.x += (dude.x - this.x);
+        this.y += (dude.y - this.y);
     }
 }
