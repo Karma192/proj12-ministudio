@@ -23,4 +23,4 @@ game.scene.add('gamescene', GameScene)
 game.scene.add('gameover', GameOver)
 
 //starting game scene
-game.scene.start('gamescene')
+game.scene.start('mainmenu')
